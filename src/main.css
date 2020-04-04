@@ -93,13 +93,14 @@ body {
 }
 
 .color-set {
-  background-color: red;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 72px;
   font-weight: 900;
   user-select: none;
+  overflow: hidden;
 }
 
 .color-set:before {
@@ -107,4 +108,42 @@ body {
   padding-bottom: 100%;
   display: inline-block;
   vertical-align: top;
+}
+
+.color-set:hover .color-set-draw {
+  bottom: 0;
+}
+
+.color-set-draw {
+  width: calc(100% - 16px);
+  bottom: -100%;
+  left: 8px;
+  height: auto;
+  background-color: var(--color-background);
+  position: absolute;
+  padding: 16px;
+  transition: bottom 400ms ease;
+}
+
+
+.color-set-draw ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.color-set-draw ul li {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text);
+  user-select: all;
+}
+
+.color-set-draw ul li + li {
+  margin-top: 8px;
+}
+
+.color-set-draw ul li span {
+  user-select: none;
+  color: var(--color-text-muted)
 }

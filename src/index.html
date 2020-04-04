@@ -59,7 +59,16 @@
         if (res.colors) {
           res.colors.forEach((set, index) => {
             contents += `
-              <div class="color-set" style="background-color: ${set[0]}; color: ${set[1]}">${index}</div>
+              <div class="color-set" style="background-color: ${set[0]}; color: ${set[1]}">
+                ${index}
+                <div class="color-set-draw">
+                  <ul>
+                    <li><span>Background: </span>${set[0]}</li>
+                    <li><span>Foreground: </span>${set[1]}</li>
+                  </ul>
+                </div>
+              
+              </div>
             `;
           });
         }
