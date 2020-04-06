@@ -70,6 +70,24 @@ body {
   font-weight: 600;
 }
 
+.header button {
+  -webkit-appearance: none;
+  background-color: var(--color-background);
+  color: var(--color-text-muted);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  flex-grow: 0;
+  width: fit-content;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header button.active {
+  background-color: var(--color-text-muted);
+  color: var(--color-background);
+}
+
 .color-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -146,4 +164,8 @@ body {
 .color-set-draw ul li span {
   user-select: none;
   color: var(--color-text-muted)
+}
+
+.show-aa-only .color-set:not(.color-set--aa-accessible) {
+  display: none;
 }

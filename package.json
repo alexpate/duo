@@ -1,0 +1,18 @@
+{
+  "name": "@alexpate/duo",
+  "version": "1.0.0",
+  "description": "Duo is a curated collection of my favourite colour combinations",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexpate/duo.git"
+  },
+  "author": "Alex Pate",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexpate/duo/issues"
+  },
+  "homepage": "https://github.com/alexpate/duo#readme",
+  "dependencies": {
+    "color": "^3.1.2"
+  }
+}

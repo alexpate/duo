@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Duo - Colour Pairings by Alex Pate</title>
     <link href="./main.css" rel="stylesheet" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://duo.alexpate.uk/favicon.png">
-    <meta property="og:title" content="Duo - Colour Pairings">
-    <meta property="og:url" content="https://duo.alexpate.uk">
-    <meta property="og:description" content="Duo is a collection of my favourite colour combinations">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://duo.alexpate.uk/cover.png">
-    <meta name="author" content="Alex Pate">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="https://duo.alexpate.uk">
-    <meta name="twitter:creator" content="@alexjpate">
-    <meta name="twitter:image" content="https://duo.alexpate.uk/cover.png">
-    <meta name="twitter:title" content="Duo - Colour Pairings">
-    <meta name="twitter:description" content="Duo is a collection of my favourite colour combinations">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://duo.alexpate.uk/favicon.png" />
+    <meta property="og:title" content="Duo - Colour Pairings" />
+    <meta property="og:url" content="https://duo.alexpate.uk" />
+    <meta
+      property="og:description"
+      content="Duo is a collection of my favourite colour combinations"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://duo.alexpate.uk/cover.png" />
+    <meta name="author" content="Alex Pate" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="https://duo.alexpate.uk" />
+    <meta name="twitter:creator" content="@alexjpate" />
+    <meta name="twitter:image" content="https://duo.alexpate.uk/cover.png" />
+    <meta name="twitter:title" content="Duo - Colour Pairings" />
+    <meta
+      name="twitter:description"
+      content="Duo is a collection of my favourite colour combinations"
+    />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41936976-3"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-41936976-3"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
       gtag('js', new Date());
 
       gtag('config', 'UA-41936976-3');
     </script>
-
   </head>
   <body class="light-mode">
     <div class="container">
@@ -51,7 +61,11 @@
           personal projects or that I've come across on the web.
         </h1>
 
-        <a href="/colors.json">Raw JSON →</a>
+        <a href="/colors.json">View as JSON →</a>
+        <br />
+        <button id="toggle-aa">
+          Toggle only AA Accessible Combinations
+        </button>
       </header>
 
       <main>
@@ -69,12 +83,16 @@
         if (res.colors) {
           res.colors.forEach((set, index) => {
             contents += `
-              <div class="color-set" style="background-color: ${set[0]}; color: ${set[1]}">
+              <div class="color-set${
+                set.aa_accessible ? ' color-set--aa-accessible' : ''
+              }" style="background-color: ${set.colors[0]}; color: ${
+              set.colors[1]
+            }">
                 ${index}
                 <div class="color-set-draw">
                   <ul>
-                    <li><span>Background: </span>${set[0]}</li>
-                    <li><span>Foreground: </span>${set[1]}</li>
+                    <li><span>Background: </span>${set.colors[0]}</li>
+                    <li><span>Foreground: </span>${set.colors[1]}</li>
                   </ul>
                 </div>
               
@@ -84,6 +102,15 @@
         }
 
         document.querySelector('.color-grid').innerHTML = contents;
+
+        const aaToggleButton = document.getElementById('toggle-aa');
+
+        if (aaToggleButton) {
+          aaToggleButton.addEventListener('click', (ev) => {
+            ev.target.classList.toggle('active');
+            document.body.classList.toggle('show-aa-only');
+          });
+        }
       })();
     </script>
   </body>
