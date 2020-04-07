@@ -70,7 +70,19 @@ body {
   font-weight: 600;
 }
 
-.header button {
+.header-button-group {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .header-button-group {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.button {
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: var(--color-background);
@@ -87,9 +99,15 @@ body {
   margin-top: 1rem;
 }
 
-.header button.active {
+.button.active {
   background-color: var(--color-text-muted);
   color: var(--color-background);
+}
+
+.button.button--twitter {
+  background-color: #1DA1F2;
+  color: var(--color-background);
+  border-color: #1DA1F2;
 }
 
 .color-grid {
